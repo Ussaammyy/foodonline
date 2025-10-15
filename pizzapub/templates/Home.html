@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Pub</title>
+     <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+   
+   <header>
+    <h1>🍕 Pizza Pub</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="cart">
+      🛒
+      <div class="cart-count" id="cart-count">0</div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h2>Welcome to Pizza Pub</h2>
+    <p>Delicious, Fresh & Hot — Just for You!</p>
+  </section>
+
+  <section class="menu-section" id="menu">
+    <h2>Our Menu</h2>
+    <div class="menu-grid" id="menu-grid">
+      <!-- Pizza Items added by JavaScript -->
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Pizza Pub. All rights reserved.
+  </footer>
+
+  <script>
+    const menuItems = [
+      {name: 'Margherita', price: 7.99, img: 'https://images.unsplash.com/photo-1601924572064-3b8b3e8d9d7f?auto=format&fit=crop&w=800&q=80'},
+      {name: 'Pepperoni', price: 8.99, img: 'https://images.unsplash.com/photo-1594007654729-407eedc4be6e?auto=format&fit=crop&w=800&q=80'},
+      {name: 'BBQ Chicken', price: 9.49, img: 'https://images.unsplash.com/photo-1601924638867-3ec4d89f3bb3?auto=format&fit=crop&w=800&q=80'},
+      {name: 'Veggie Delight', price: 8.49, img: 'https://images.unsplash.com/photo-1601924643969-260f00b7f96a?auto=format&fit=crop&w=800&q=80'},
+      {name: 'Meat Feast', price: 9.99, img: 'https://images.unsplash.com/photo-1594007654729-407eedc4be6e?auto=format&fit=crop&w=800&q=80'},
+      {name: 'Hawaiian', price: 8.79, img: 'https://images.unsplash.com/photo-1601924572064-3b8b3e8d9d7f?auto=format&fit=crop&w=800&q=80'},
+      {name: 'Cheese Burst', price: 7.49, img: 'https://images.unsplash.com/photo-1601924572064-3b8b3e8d9d7f?auto=format&fit=crop&w=800&q=80'},
+      {name: 'Spicy Paneer', price: 8.99, img: 'https://images.unsplash.com/photo-1601924572064-3b8b3e8d9d7f?auto=format&fit=crop&w=800&q=80'},
+      {name: 'Chicken Supreme', price: 9.99, img: 'https://images.unsplash.com/photo-1601924638867-3ec4d89f3bb3?auto=format&fit=crop&w=800&q=80'},
+      {name: 'Farmhouse', price: 8.49, img: 'https://images.unsplash.com/photo-1601924643969-260f00b7f96a?auto=format&fit=crop&w=800&q=80'},
+      {name: 'Tandoori Pizza', price: 9.59, img: 'https://images.unsplash.com/photo-1601924638867-3ec4d89f3bb3?auto=format&fit=crop&w=800&q=80'},
+      {name: 'Mushroom Mania', price: 7.99, img: 'https://images.unsplash.com/photo-1601924643969-260f00b7f96a?auto=format&fit=crop&w=800&q=80'},
+      {name: 'Double Cheese', price: 8.19, img: 'https://images.unsplash.com/photo-1601924572064-3b8b3e8d9d7f?auto=format&fit=crop&w=800&q=80'},
+      {name: 'Mexican Wave', price: 9.29, img: 'https://images.unsplash.com/photo-1601924638867-3ec4d89f3bb3?auto=format&fit=crop&w=800&q=80'},
+      {name: 'Peri Peri Chicken', price: 9.49, img: 'https://images.unsplash.com/photo-1594007654729-407eedc4be6e?auto=format&fit=crop&w=800&q=80'}
+    ];
+
+    const grid = document.getElementById('menu-grid');
+    let cartCount = 0;
+
+    menuItems.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'menu-item';
+      div.innerHTML = `
+        <img src="${item.img}" alt="${item.name}">
+        <div class="menu-info">
+          <h3>${item.name}</h3>
+          <p>£${item.price.toFixed(2)}</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      `;
+      grid.appendChild(div);
+    });
+
+    document.querySelectorAll('.add-cart').forEach(btn => {
+      btn.addEventListener('click', () => {
+        cartCount++;
+        document.getElementById('cart-count').innerText = cartCount;
+      });
+    });
+  </script>
+
+
+</body>
+</html>
